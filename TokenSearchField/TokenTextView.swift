@@ -67,7 +67,7 @@ class TokenTextView: NSTextView {
         continue
       }
 
-      textStorage.enumerateAttribute(NSAttachmentAttributeName,
+      textStorage.enumerateAttribute(NSAttributedString.Key.attachment,
                                       in: intersection,
                                       options: NSAttributedString.EnumerationOptions(),
                                       using: { (value: Any?, range: NSRange, stop: UnsafeMutablePointer<ObjCBool>) in
@@ -81,15 +81,15 @@ class TokenTextView: NSTextView {
   }
 
   override func setSelectedRanges(_ ranges: [NSValue], affinity: NSSelectionAffinity, stillSelecting stillSelectingFlag: Bool) {
-    setHighlightedAtRanges(self.selectedRanges as [NSRange], newHighlight: false)
-    setHighlightedAtRanges(ranges as [NSRange], newHighlight: true)
+    setHighlightedAtRanges(self.selectedRanges as! [NSRange], newHighlight: false)
+    setHighlightedAtRanges(ranges as! [NSRange], newHighlight: true)
     super.setSelectedRanges(ranges, affinity: affinity, stillSelecting: stillSelectingFlag)
   }
 
   func tokenComponents(string: String)
     -> (stem: String?, value: String?) {
 
-      let stringComponents = string.characters.split(separator: ":").flatMap(String.init)
+      let stringComponents = string.split(separator: ":")
 
       let tokenStem: String? = stringComponents.first?.trimmingCharacters(in: .whitespaces)
       let tokenValue: String? = stringComponents.last?.trimmingCharacters(in: .whitespaces)
@@ -129,9 +129,9 @@ class TokenTextView: NSTextView {
         let string: NSAttributedString = NSAttributedString(attachment: attachment)
         let tokenString: NSMutableAttributedString = NSMutableAttributedString(attributedString: string)
 
-        tokenString.addAttributes([
-          NSFontAttributeName: NSFont.systemFont(ofSize: 13)
-          ], range: NSRange(location: 0, length: tokenString.length))
+        tokenString.addAttributes(convertToNSAttributedStringKeyDictionary([
+          convertFromNSAttributedStringKey(NSAttributedString.Key.font): NSFont.systemFont(ofSize: 13)
+          ]), range: NSRange(location: 0, length: tokenString.length))
 
         textStorage?.replaceCharacters(in: tokenRange, with: tokenString)
 
@@ -144,7 +144,6 @@ class TokenTextView: NSTextView {
 
   override func keyDown(with event: NSEvent) {
     let index = event.characters?.startIndex
-    let character = event.characters!
 
     if let characters = event.characters {
       let character = characters[index!]
@@ -163,4 +162,14 @@ class TokenTextView: NSTextView {
       }
     }
   }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

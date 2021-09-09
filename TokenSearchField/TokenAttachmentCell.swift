@@ -48,11 +48,11 @@ class TokenAttachmentCell: NSTextAttachmentCell {
   }
 
   func cellTitleSize() -> NSSize {
-    let font: NSFont = NSFont.systemFont(ofSize: 9.0, weight: NSFontWeightMedium)
+    let font: NSFont = NSFont.systemFont(ofSize: 9.0, weight: NSFont.Weight.medium)
 
-    let titleStringSize: NSSize = cellTitleString.size(withAttributes: [
-      NSFontAttributeName: font
-    ])
+    let titleStringSize: NSSize = cellTitleString.size(withAttributes: convertToOptionalNSAttributedStringKeyDictionary([
+      convertFromNSAttributedStringKey(NSAttributedString.Key.font): font
+    ]))
 
     return NSSize(
       width: titleStringSize.width + (cellMarginSide * 2),
@@ -61,9 +61,9 @@ class TokenAttachmentCell: NSTextAttachmentCell {
   }
 
   func cellValueSize() -> NSSize {
-    let valueStringSize: NSSize = stringValue.size(withAttributes: [
-      NSFontAttributeName: font!
-    ])
+    let valueStringSize: NSSize = stringValue.size(withAttributes: convertToOptionalNSAttributedStringKeyDictionary([
+      convertFromNSAttributedStringKey(NSAttributedString.Key.font): font!
+    ]))
 
     return NSSize(
       width: valueStringSize.width + (cellMarginSide * 3),
@@ -87,12 +87,12 @@ class TokenAttachmentCell: NSTextAttachmentCell {
 
     let tokenTitlePath: NSBezierPath = tokenTitlePathForBounds(bounds: cellFrame)
 
-    NSGraphicsContext.current()?.saveGraphicsState()
+    NSGraphicsContext.current?.saveGraphicsState()
 
     tokenTitlePath.addClip()
     tokenTitlePath.fill()
 
-    NSGraphicsContext.current()?.restoreGraphicsState()
+    NSGraphicsContext.current?.restoreGraphicsState()
 
     NSColor.init(red: 0.92, green: 0.92, blue: 0.93, alpha: 1.0).set()
 
@@ -100,13 +100,13 @@ class TokenAttachmentCell: NSTextAttachmentCell {
       NSColor.init(red: 0.62, green: 0.63, blue: 0.64, alpha: 1.0).set()
     }
 
-    NSGraphicsContext.current()?.saveGraphicsState()
+    NSGraphicsContext.current?.saveGraphicsState()
 
     let tokenValuePath: NSBezierPath = tokenValuePathForBounds(bounds: cellFrame)
     tokenValuePath.addClip()
     tokenValuePath.fill()
 
-    NSGraphicsContext.current()?.restoreGraphicsState()
+    NSGraphicsContext.current?.restoreGraphicsState()
 
     var textColor: NSColor
 
@@ -122,20 +122,20 @@ class TokenAttachmentCell: NSTextAttachmentCell {
     cellTitleString.draw(at: CGPoint(
         x: cellFrame.origin.x + cellMarginSide,
         y: cellFrame.origin.y + 2),
-      withAttributes: [
-        NSFontAttributeName: NSFont.systemFont(ofSize: 9, weight: NSFontWeightMedium),
-        NSForegroundColorAttributeName: textColor,
-        NSParagraphStyleAttributeName: paragraphStyle
-    ])
+      withAttributes: convertToOptionalNSAttributedStringKeyDictionary([
+        convertFromNSAttributedStringKey(NSAttributedString.Key.font): NSFont.systemFont(ofSize: 9, weight: NSFont.Weight.medium),
+        convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): textColor,
+        convertFromNSAttributedStringKey(NSAttributedString.Key.paragraphStyle): paragraphStyle
+    ]))
 
     stringValue.draw(at: CGPoint(
         x: cellFrame.origin.x + cellTitleSize().width + 0.5 + cellMarginSide,
         y: cellFrame.origin.y - 1),
-      withAttributes: [
-        NSFontAttributeName: NSFont.systemFont(ofSize: 13),
-        NSForegroundColorAttributeName: textColor,
-        NSParagraphStyleAttributeName: paragraphStyle
-    ])
+      withAttributes: convertToOptionalNSAttributedStringKeyDictionary([
+        convertFromNSAttributedStringKey(NSAttributedString.Key.font): NSFont.systemFont(ofSize: 13),
+        convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): textColor,
+        convertFromNSAttributedStringKey(NSAttributedString.Key.paragraphStyle): paragraphStyle
+    ]))
   }
 
   override func draw(withFrame cellFrame: NSRect, in controlView: NSView?,
@@ -154,7 +154,7 @@ class TokenAttachmentCell: NSTextAttachmentCell {
                      characterIndex charIndex: Int) {
 
     if let textField = controlView as? NSSearchField {
-      print(textField.currentEditor()?.selectedRange)
+        print(textField.currentEditor()?.selectedRange ?? "")
     }
 
     draw(withFrame: cellFrame, in: controlView)
@@ -258,7 +258,7 @@ class TokenAttachmentCell: NSTextAttachmentCell {
     let value: [NSValue] = [NSRange(location: charIndex, length: 1) as NSValue]
     (controlView as? TokenTextView)?.selectedRanges = value
 
-    return theEvent.type == NSEventType.leftMouseDown
+    return theEvent.type == NSEvent.EventType.leftMouseDown
   }
 
   override func trackMouse(with theEvent: NSEvent,
@@ -268,4 +268,15 @@ class TokenAttachmentCell: NSTextAttachmentCell {
     return true
   }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

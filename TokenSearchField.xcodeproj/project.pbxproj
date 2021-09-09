@@ -15,16 +15,6 @@
 		47B920091D8E019400089E85 /* TokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B920081D8E019400089E85 /* TokenAttachmentCell.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4786BC2A1D8DA9DA001BDFA6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4786BC121D8DA9D9001BDFA6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4786BC191D8DA9D9001BDFA6;
-			remoteInfo = TokenSearchField;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		47643F611D98D654009CBE84 /* TokenSearchFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenSearchFieldCell.swift; sourceTree = "<group>"; };
 		47643F631D98DBA2009CBE84 /* TokenTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTextView.swift; sourceTree = "<group>"; };
@@ -32,21 +22,12 @@
 		4786BC1D1D8DA9D9001BDFA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4786BC221D8DA9D9001BDFA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4786BC241D8DA9D9001BDFA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4786BC291D8DA9DA001BDFA6 /* TokenSearchFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokenSearchFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4786BC461D8DA9EA001BDFA6 /* TokenSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenSearchField.swift; sourceTree = "<group>"; };
-		478B1D851D9ECEEF0036C842 /* Fonts.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Fonts.playground; sourceTree = "<group>"; };
 		47B920081D8E019400089E85 /* TokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenAttachmentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4786BC171D8DA9D9001BDFA6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4786BC261D8DA9DA001BDFA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				4786BC1A1D8DA9D9001BDFA6 /* TokenSearchField.app */,
-				4786BC291D8DA9DA001BDFA6 /* TokenSearchFieldTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,7 +63,6 @@
 				47B920081D8E019400089E85 /* TokenAttachmentCell.swift */,
 				47643F611D98D654009CBE84 /* TokenSearchFieldCell.swift */,
 				47643F631D98DBA2009CBE84 /* TokenTextView.swift */,
-				478B1D851D9ECEEF0036C842 /* Fonts.playground */,
 			);
 			path = TokenSearchField;
 			sourceTree = "<group>";
@@ -108,24 +87,6 @@
 			productReference = 4786BC1A1D8DA9D9001BDFA6 /* TokenSearchField.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4786BC281D8DA9DA001BDFA6 /* TokenSearchFieldTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4786BC401D8DA9DA001BDFA6 /* Build configuration list for PBXNativeTarget "TokenSearchFieldTests" */;
-			buildPhases = (
-				4786BC251D8DA9DA001BDFA6 /* Sources */,
-				4786BC261D8DA9DA001BDFA6 /* Frameworks */,
-				4786BC271D8DA9DA001BDFA6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4786BC2B1D8DA9DA001BDFA6 /* PBXTargetDependency */,
-			);
-			name = TokenSearchFieldTests;
-			productName = TokenSearchFieldTests;
-			productReference = 4786BC291D8DA9DA001BDFA6 /* TokenSearchFieldTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -138,12 +99,8 @@
 				TargetAttributes = {
 					4786BC191D8DA9D9001BDFA6 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
-					};
-					4786BC281D8DA9DA001BDFA6 = {
-						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 4786BC191D8DA9D9001BDFA6;
 					};
 				};
 			};
@@ -161,7 +118,6 @@
 			projectRoot = "";
 			targets = (
 				4786BC191D8DA9D9001BDFA6 /* TokenSearchField */,
-				4786BC281D8DA9DA001BDFA6 /* TokenSearchFieldTests */,
 			);
 		};
 /* End PBXProject section */
@@ -172,13 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4786BC231D8DA9D9001BDFA6 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4786BC271D8DA9DA001BDFA6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,22 +146,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4786BC251D8DA9DA001BDFA6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4786BC2B1D8DA9DA001BDFA6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4786BC191D8DA9D9001BDFA6 /* TokenSearchField */;
-			targetProxy = 4786BC2A1D8DA9DA001BDFA6 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4786BC211D8DA9D9001BDFA6 /* MainMenu.xib */ = {
@@ -327,7 +261,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crosscoded.TokenSearchField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -340,37 +275,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crosscoded.TokenSearchField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		4786BC411D8DA9DA001BDFA6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TokenSearchFieldTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.crosscoded.TokenSearchFieldTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TokenSearchField.app/Contents/MacOS/TokenSearchField";
-			};
-			name = Debug;
-		};
-		4786BC421D8DA9DA001BDFA6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TokenSearchFieldTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.crosscoded.TokenSearchFieldTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TokenSearchField.app/Contents/MacOS/TokenSearchField";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -391,15 +297,6 @@
 			buildConfigurations = (
 				4786BC3E1D8DA9DA001BDFA6 /* Debug */,
 				4786BC3F1D8DA9DA001BDFA6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4786BC401D8DA9DA001BDFA6 /* Build configuration list for PBXNativeTarget "TokenSearchFieldTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4786BC411D8DA9DA001BDFA6 /* Debug */,
-				4786BC421D8DA9DA001BDFA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
